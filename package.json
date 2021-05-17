@@ -4,6 +4,7 @@
   "description": "��#\u0000 \u0000I\u0000o\u0000T\u0000v\u00002\u0000.\u00000\u0000-\u0000B\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000-\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
+    "dev":"nodemon broker.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/graphica99/IoTv2.0-Backend-#readme",
   "dependencies": {
+    "aedes": "^0.46.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "config": "^3.3.6",
