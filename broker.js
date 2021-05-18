@@ -18,11 +18,12 @@ const userRoute = require("./routes/user");
 const projectRoute = require("./routes/project");
 //middleware
 app.use(cors());
+app.use(express.json());
 
 //routes middlewares
+app.use("/api/iot/v2.0/user", userRoute);
 app.use("/api/iot/v2.0/project", projectRoute);
 app.use("/api/iot/v2.0/device", deviceRoute);
-app.use("/api/iot/v2.0/user", userRoute);
 
 // database connection
 mongoose

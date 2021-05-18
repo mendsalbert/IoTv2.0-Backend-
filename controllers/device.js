@@ -1,3 +1,5 @@
+const Device = require("../models/Device");
+
 exports.getDeviceController = async (req, res) => {};
 
 exports.getDevicesController = async (req, res) => {};
