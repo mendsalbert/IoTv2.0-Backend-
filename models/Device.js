@@ -5,10 +5,6 @@ const deviceSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
-  dev_id: {
-    type: String,
-    required: true,
-  },
   project_id: {
     type: String,
     required: true,

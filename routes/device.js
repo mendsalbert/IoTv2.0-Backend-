@@ -14,7 +14,7 @@ const { authenticated } = require("../middlewares/authenticate");
 //?route -- POST /api/iot/v2.0/device/get-device
 //?@desc -- get a device
 //?@access -- protected
-route.get("/get-device/:user_id", authenticated, getDeviceController);
+route.post("/get-device/:id", authenticated, getDeviceController);
 
 //?route -- POST /api/iot/v2.0/device/get-devices
 //?@desc -- get all devices
