@@ -8,7 +8,6 @@ const {
   deleteProjectController,
 } = require("../controllers/project");
 
-//todo ADD AUTHENTICATION ALL ROUTES
 const { authenticated } = require("../middlewares/authenticate");
 
 //?route -- POST /api/iot/v2.0/project/get-project

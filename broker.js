@@ -2,10 +2,8 @@ const aedes = require("aedes")();
 const config = require("config");
 const server = require("net").createServer(aedes.handle);
 const express = require("express");
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const morgan = require("morgan");
 const app = express();
 const port = 8080;
 const mongoosePort = config.get("mongoURI");
@@ -16,15 +14,17 @@ const brokerPort = config.get("BROKER_PORT");
 const deviceRoute = require("./routes/device");
 const userRoute = require("./routes/user");
 const projectRoute = require("./routes/project");
+const detailRoute = require("./routes/detail");
+
 //middleware
 app.use(cors());
 app.use(express.json());
 
-//routes middlewares
+//routes middle-wares
 app.use("/api/iot/v2.0/user", userRoute);
 app.use("/api/iot/v2.0/project", projectRoute);
 app.use("/api/iot/v2.0/device", deviceRoute);
-
+app.use("/api/iot/v2.0/detail", detailRoute);
 // database connection
 mongoose
   .connect(mongoosePort, {

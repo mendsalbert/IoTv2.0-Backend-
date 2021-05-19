@@ -1,10 +1,9 @@
 const Device = require("../models/Device");
-const getProjectID = require("../helper/project");
+const getProject = require("../helper/project");
 
 exports.getDeviceController = async (req, res) => {
   try {
     const device_id = req.params.id;
-    console.log(device_id);
     let device = await Device.findOne({ _id: device_id });
     res.json({ device });
   } catch (error) {
@@ -32,7 +31,7 @@ exports.addDeviceController = async (req, res) => {
    */
   try {
     const { name, purpose } = req.body;
-    let project = await getProjectID(req.user.id);
+    let project = await getProject.getProjectID(req.user.id);
     let project_id = project._id;
     let device = new Device({
       name: name,

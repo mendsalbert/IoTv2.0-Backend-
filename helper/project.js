@@ -9,4 +9,13 @@ const getProjectID = async (userId) => {
   let project = await Project.findOne({ user_id: userId });
   return project;
 };
-module.exports = getProjectID;
+
+const getProjectTopic = async (userId) => {
+  let project = await Project.findOne({ user_id: userId });
+  return project.topic;
+};
+
+module.exports = {
+  getProjectID,
+  getProjectTopic,
+};

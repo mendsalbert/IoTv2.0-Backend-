@@ -22,6 +22,8 @@ exports.getProjectsController = async (req, res) => {
 exports.addProjectController = async (req, res) => {
   try {
     const { pname, topic } = req.body;
+
+    //todo Make topic unique. Check if it already exist
     const user_id = req.user.id;
     let project = new Project({
       name: pname,
