@@ -40,10 +40,12 @@ exports.getDetailsController = async (req, res) => {
       ?FIND A WAY OF INSERTING DEVICE ID INTO THE DETAIL DB
       */
       const now = new Date();
-      const newDate = dateFormat(now, "dddd,H:MM:ss TT");
+      const time = dateFormat(now, "dddd,H:MM:ss TT");
+      const date = dateFormat(now, "dd-mm-yy ");
       const detail = new Detail({
         topic: t,
-        time: newDate,
+        time: time,
+        date: date,
         data: m,
       });
       detail.save((err, data) => {
@@ -56,4 +58,32 @@ exports.getDetailsController = async (req, res) => {
       console.log("something went wrong in inserting data into database");
     }
   });
+};
+
+exports.downloadDataController = async (req, res) => {
+  try {
+    /**
+     * download data based on topic
+     * give user chance to select from days or weeks to download
+     * eg 1 day , 7 days , 3 week(21days) , 1 month, or enter own date
+     */
+    //! This must be tested very well
+    let topic, days, date, today, last, endDate, details;
+    topic = req.params.topic;
+    days = req.params.days;
+    date = new Date();
+    today = dateFormat(date, "dd-mm-yy ");
+    last = new Date(date.getTime() - days * 24 * 60 * 60 * 1000);
+    endDate = dateFormat(last, "dd-mm-yy ");
+    details = await Detail.find({
+      topic: topic,
+      date: {
+        $gte: today,
+        $lte: endDate,
+      },
+    });
+    res.json({ details });
+  } catch (error) {
+    res.json({ error });
+  }
 };
