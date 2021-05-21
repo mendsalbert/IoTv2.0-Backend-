@@ -12,7 +12,8 @@ exports.getProjectController = async (req, res) => {
 
 exports.getProjectsController = async (req, res) => {
   try {
-    let projects = await Project.find({});
+    let user_id = req.user.id;
+    let projects = await Project.find({ user_id: user_id });
     res.json({ projects });
   } catch (error) {
     res.status(400).json({ msg: error });
@@ -21,17 +22,17 @@ exports.getProjectsController = async (req, res) => {
 
 exports.addProjectController = async (req, res) => {
   try {
-    const { pname, topic } = req.body;
-
-    let proj = await Project.find({ topic: topic });
+    const { pname, topic, description } = req.body;
+    let proj = await Project.findOne({ topic: topic });
     if (proj) {
-      res.json({ msg: "Topic name exist" });
+      return res.status(400).json({ msg: "Topic name exist" });
     } else {
       const user_id = req.user.id;
       let project = new Project({
         name: pname,
         user_id: user_id,
         topic: topic,
+        description: description,
       });
       const savedProject = await project.save();
       res.json({ savedProject });
@@ -43,7 +44,7 @@ exports.addProjectController = async (req, res) => {
 
 exports.editProjectController = async (req, res) => {
   try {
-    const { pname, topic } = req.body;
+    const { pname, topic, description } = req.body;
     let proj = await Project.find({ topic: topic });
     if (proj) {
       res.json({ msg: "Topic name exist" });
@@ -51,7 +52,7 @@ exports.editProjectController = async (req, res) => {
       let project_id = req.params.id;
       let project = await Project.findByIdAndUpdate(
         { _id: project_id },
-        { name: pname, topic: topic }
+        { name: pname, topic: topic, description: description }
       );
       res.json({ project });
     }

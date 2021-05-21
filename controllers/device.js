@@ -13,7 +13,8 @@ exports.getDeviceController = async (req, res) => {
 
 exports.getDevicesController = async (req, res) => {
   try {
-    let devices = await Device.find({});
+    let project_id = req.query.project_id;
+    let devices = await Device.find({ project_id });
     res.json({ devices });
   } catch (error) {
     res.status(400).json({ msg: error });
