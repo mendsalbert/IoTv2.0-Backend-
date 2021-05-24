@@ -53,7 +53,7 @@ exports.getDetailsController = async (req, res) => {
           console.log(err);
         }
       });
-      console.log(message.toString());
+      // console.log(message.toString());
     } else {
       console.log("something went wrong in inserting data into database");
     }

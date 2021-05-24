@@ -9,7 +9,7 @@ const { authenticated } = require("../middlewares/authenticate");
 //?route -- POST /api/iot/v2.0/detail/get-details
 //?@desc -- get details of data coming from the user
 //?@access -- private
-route.post("/get-details", authenticated, getDetailsController);
+route.get("/get-details", authenticated, getDetailsController);
 
 //?route -- POST /api/iot/v2.0/detail/download-data
 //?@desc -- download data coming from sensors (devices)

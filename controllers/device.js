@@ -31,12 +31,13 @@ exports.addDeviceController = async (req, res) => {
    data[array]
    */
   try {
-    const { name, purpose } = req.body;
+    const { name, purpose, projectId } = req.body;
     let project = await getProject.getProjectID(req.user.id);
     let project_id = project._id;
+
     let device = new Device({
       name: name,
-      project_id: project_id,
+      project_id: projectId,
       purpose: purpose,
       mqttId: "1234567",
       mqttPassword: "1234567",
