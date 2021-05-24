@@ -10,7 +10,7 @@ exports.getDetailsController = async (req, res) => {
   let user_id = req.user.id;
   let topic = await project.getProjectTopic(user_id);
   client.subscribe(topic, (err) => {
-    err ? console.log(err) : console.log("subscribed on topic " + topic);
+    // err ? console.log(err) : console.log("subscribed on topic " + topic);
   });
 
   //?display at the front end

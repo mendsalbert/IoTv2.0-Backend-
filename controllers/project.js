@@ -23,20 +23,21 @@ exports.getProjectsController = async (req, res) => {
 exports.addProjectController = async (req, res) => {
   try {
     const { pname, topic, description } = req.body;
-    let proj = await Project.findOne({ topic: topic });
-    if (proj) {
-      return res.status(400).json({ msg: "Topic name exist" });
-    } else {
-      const user_id = req.user.id;
-      let project = new Project({
-        name: pname,
-        user_id: user_id,
-        topic: topic,
-        description: description,
-      });
-      const savedProject = await project.save();
-      res.json({ savedProject });
-    }
+    //!THIS IS COMMENTED TEMPORARY (IN PRODUCTION TOPIC MUST BE UNIQUE TO AVOID CONFLICT)
+    // let proj = await Project.findOne({ topic: topic });
+    // if (proj) {
+    //   return res.status(400).json({ msg: "Topic name exist" });
+    // } else {
+    const user_id = req.user.id;
+    let project = new Project({
+      name: pname,
+      user_id: user_id,
+      topic: topic,
+      description: description,
+    });
+    const savedProject = await project.save();
+    res.json({ savedProject });
+    // }
   } catch (error) {
     res.status(400).json({ msg: error });
   }
