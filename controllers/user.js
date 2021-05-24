@@ -46,16 +46,14 @@ exports.signInController = async (req, res) => {
     const { email, password } = req.body;
     let user = await User.findOne({ email });
     if (!user) {
-      const error = new Error(`A user with this email doesn't exist`);
-      error.statusCode = 500;
-      return error;
+      return res
+        .status(400)
+        .json({ msg: "A user with this email do not exist" });
     }
     if (user) {
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        const error = new Error("password or email is incorrect");
-        res.json({ msg: "Password or email is incorrect" });
-        throw error;
+        return res.status(400).json({ msg: "Password or email is incorrect" });
       }
     }
 

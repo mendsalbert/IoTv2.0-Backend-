@@ -17,6 +17,10 @@ const projectRoute = require("./routes/project");
 const detailRoute = require("./routes/detail");
 
 //middleware
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 app.use(cors());
 app.use(express.json());
 
