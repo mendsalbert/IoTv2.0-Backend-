@@ -16,5 +16,5 @@ client.on("connect", () => {
     ];
     const mess = JSON.stringify(data);
     client.publish(topic_val, mess);
-  }, 1000);
+  }, 2000);
 });

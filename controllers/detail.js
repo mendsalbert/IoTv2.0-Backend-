@@ -4,8 +4,8 @@ const project = require("../helper/project");
 const Detail = require("../models/Detail");
 const dateFormat = require("dateformat");
 const io = require("../socket");
-
 exports.getDetailsController = async (req, res) => {
+  client.setMaxListeners(0);
   //?subscribe
   let user_id = req.user.id;
   let topic = await project.getProjectTopic(user_id);
@@ -81,7 +81,7 @@ exports.downloadDataController = async (req, res) => {
         $gte: today,
         $lte: endDate,
       },
-    });
+    }).limit(20);
     res.json({ details });
   } catch (error) {
     res.json({ error });

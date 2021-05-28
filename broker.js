@@ -9,6 +9,9 @@ const port = 8080;
 const mongoosePort = config.get("mongoURI");
 const dbPort = config.get("DB_PORT");
 const brokerPort = config.get("BROKER_PORT");
+const EventEmitter = require("events");
+const emitter = new EventEmitter();
+emitter.setMaxListeners(0);
 
 //route imports
 const deviceRoute = require("./routes/device");
