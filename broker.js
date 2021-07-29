@@ -40,7 +40,7 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    server.listen(brokerPort, function () {
+    server.listen(9090, function () {
       const server = app.listen(dbPort);
       const io = require("./socket").init(server);
       io.on("connection", (socket) => {
