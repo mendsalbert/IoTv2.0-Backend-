@@ -1,5 +1,6 @@
 const mqtt = require("mqtt");
-const client = mqtt.connect("mqtt://localhost:8080");
+// const client = mqtt.connect("mqtt://localhost:8080");
+const client = mqtt.connect("mqtt://10.10.64.11:8080");
 const topic_val = "eco";
 
 client.on("connect", () => {
