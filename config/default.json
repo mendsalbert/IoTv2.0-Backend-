@@ -1,5 +1,5 @@
 {
-  "mongoURI": "mongodb://localhost:27017/iotv2?readPreference=primary&ssl=false",
+  "mongoURI": "mongodb+srv://iot:tuu87aRD7fQZDUr@cluster0.5286h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   "jwtSecret": "ilovetocode",
   "DB_PORT": 5000,
   "BROKER_PORT": 8080,
