@@ -28,7 +28,7 @@ app.use(cors());
 app.use(express.json());
 
 //routes middle-wares
-app.use('/home',(req,res)=>{
+app.get('/home',(req,res)=>{
   res.send('home page')
 })
 app.use("/api/iot/v2.0/user", userRoute);
