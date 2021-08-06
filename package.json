@@ -2,8 +2,9 @@
   "name": "IoTv2.0(BackEnd)",
   "version": "1.0.0",
   "description": "��#\u0000 \u0000I\u0000o\u0000T\u0000v\u00002\u0000.\u00000\u0000-\u0000B\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000-\u0000\r\u0000 \u0000",
-  "main": "index.js",
+  "main": "broker.js",
   "scripts": {
+    "start": "node broker.js",
     "dev":"nodemon broker.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
