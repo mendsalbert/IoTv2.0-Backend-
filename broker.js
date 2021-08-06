@@ -5,10 +5,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-const port = 8080;
+require('dotenv').config()
+// const port = Process.env.PORT || 8080;
 const mongoosePort = config.get("mongoURI");
-const dbPort = config.get("DB_PORT");
-const brokerPort = config.get("BROKER_PORT");
+const dbPort = process.env.PORT || 5000 ;
+const brokerPort = process.env.PORT || 8080;
+// const dbPort = config.get("DB_PORT");
+// Process.env.PORT || 2;
+// const brokerPort = config.get("BROKER_PORT");
 const EventEmitter = require("events");
 const emitter = new EventEmitter();
 emitter.setMaxListeners(0);
@@ -31,6 +35,7 @@ app.use(express.json());
 app.get('/home',(req,res)=>{
   res.send('home page')
 })
+
 app.use("/api/iot/v2.0/user", userRoute);
 app.use("/api/iot/v2.0/project", projectRoute);
 app.use("/api/iot/v2.0/device", deviceRoute);
@@ -49,7 +54,7 @@ mongoose
       io.on("connection", (socket) => {
         // console.log("socket client connected");
       });
-      console.log("broker server connected on port:", port);
+      // console.log("broker server connected on port:", port);
     });
     console.log("database connected");
   })
