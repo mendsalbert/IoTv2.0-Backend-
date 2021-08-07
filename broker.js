@@ -8,7 +8,8 @@ const app = express();
 require('dotenv').config()
 const mongoosePort = config.get("mongoURI");
 const dbPort = process.env.PORT || 5000;
-const brokerPort = process.env.PORT || 8080;
+const brokerPort = 2356;
+// const brokerPort = process.env.PORT || 8080;
 
 //route imports
 const deviceRoute = require("./routes/device");
@@ -38,9 +39,9 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    // server.listen(brokerPort, function () {
-    //    console.log('broker')
-    // });
+    server.listen(brokerPort, function () {
+       console.log('broker')
+    });
     app.listen(dbPort,function(){
       console.log('listening to my port');
     })
