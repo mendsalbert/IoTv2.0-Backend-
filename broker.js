@@ -39,10 +39,11 @@ mongoose
   })
   .then(() => {
     server.listen(brokerPort, function () {
-        app.listen(dbPort,function(){
-        console.log('listening to my port');
-      })
+       console.log('broker')
     });
+    app.listen(dbPort,function(){
+      console.log('listening to my port');
+    })
     console.log("database connected");
   })
   .catch((e) => {
