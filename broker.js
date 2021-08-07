@@ -42,7 +42,7 @@ app.use("/api/iot/v2.0/device", deviceRoute);
 app.use("/api/iot/v2.0/detail", detailRoute);
 // database connection
 mongoose
-  .connect(mongoosePort, {
+  .connect('mongodb+srv://iot:tuu87aRD7fQZDUr@cluster0.5286h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
