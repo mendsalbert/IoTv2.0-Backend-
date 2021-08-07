@@ -6,16 +6,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 require('dotenv').config()
-// const port = Process.env.PORT || 8080;
 const mongoosePort = config.get("mongoURI");
 const dbPort = process.env.PORT || 5000;
 const brokerPort = process.env.PORT || 8080;
-// const dbPort = config.get("DB_PORT");
-// Process.env.PORT || 2;
-// const brokerPort = config.get("BROKER_PORT");
-const EventEmitter = require("events");
-const emitter = new EventEmitter();
-emitter.setMaxListeners(0);
+// const EventEmitter = require("events");
+// const emitter = new EventEmitter();
+// emitter.setMaxListeners(0);
 
 //route imports
 const deviceRoute = require("./routes/device");
