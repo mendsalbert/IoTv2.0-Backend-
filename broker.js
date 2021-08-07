@@ -38,9 +38,9 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    server.listen(brokerPort, function () {
-       console.log('broker')
-    });
+    // server.listen(brokerPort, function () {
+    //    console.log('broker')
+    // });
     app.listen(dbPort,function(){
       console.log('listening to my port');
     })
