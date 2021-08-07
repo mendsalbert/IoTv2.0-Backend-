@@ -8,7 +8,7 @@ const app = express();
 require('dotenv').config()
 // const port = Process.env.PORT || 8080;
 const mongoosePort = config.get("mongoURI");
-const dbPort = process.env.PORT || 5000 ;
+const dbPort = process.env.PORT || 9999;
 const brokerPort = process.env.PORT || 8080;
 // const dbPort = config.get("DB_PORT");
 // Process.env.PORT || 2;
@@ -31,11 +31,14 @@ const detailRoute = require("./routes/detail");
 app.use(cors());
 app.use(express.json());
 
+// console.log(process.env.PORT)
 //routes middle-wares
 app.get('/home',(req,res)=>{
   res.send('home page')
 })
-
+ app.get('/',(req,res)=>{
+   res.send('main home page')
+ })
 app.use("/api/iot/v2.0/user", userRoute);
 app.use("/api/iot/v2.0/project", projectRoute);
 app.use("/api/iot/v2.0/device", deviceRoute);
