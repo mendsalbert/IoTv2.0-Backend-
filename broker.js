@@ -8,7 +8,7 @@ const app = express();
 require('dotenv').config()
 // const port = Process.env.PORT || 8080;
 const mongoosePort = config.get("mongoURI");
-const dbPort = process.env.PORT || 9999;
+const dbPort = process.env.PORT || 17865;
 const brokerPort = process.env.PORT || 8080;
 // const dbPort = config.get("DB_PORT");
 // Process.env.PORT || 2;
@@ -28,6 +28,7 @@ const detailRoute = require("./routes/detail");
 //   res.header("Access-Control-Allow-Origin", "*");
 //   next();
 // });
+
 app.use(cors());
 app.use(express.json());
 
