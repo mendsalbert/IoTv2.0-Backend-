@@ -41,10 +41,16 @@ mongoose
   .then(() => {
     server.listen(brokerPort, function () {
        console.log('broker')
+       const server = app.listen(dbPort);
+       const io = require('./socket').init(server);
+       io.on('connection', socket => {
+         console.log('Client connected');
+       });
     });
     app.listen(dbPort,function(){
       console.log('listening to my port');
     })
+   
     console.log("database connected");
   })
   .catch((e) => {

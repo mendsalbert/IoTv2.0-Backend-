@@ -3,7 +3,7 @@ module.exports = {
   init: (httpServer) => {
     io = require("socket.io")(httpServer, {
       cors: {
-        origin: "http://localhost:3000",
+        origin: "https://iotdevlab.herokuapp.com",
         methods: ["GET", "POST"],
       },
     });
