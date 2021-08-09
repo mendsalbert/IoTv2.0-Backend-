@@ -47,9 +47,9 @@ mongoose
          console.log('Client connected');
        });
     });
-    app.listen(dbPort,function(){
-      console.log('listening to my port');
-    })
+    // app.listen(dbPort,function(){
+    //   console.log('listening to my port');
+    // })
    
     console.log("database connected");
   })
