@@ -3,6 +3,7 @@ const mqtt = require("mqtt");
 const client = mqtt.connect("mqtt://https://iotdevlab.herokuapp.com:2356");
 const topic_val = "eco";
 
+console.log("mqtt broker connected on server");
 client.on("connect", () => {
   console.log("mqtt broker connected on server");
   setInterval(() => {
