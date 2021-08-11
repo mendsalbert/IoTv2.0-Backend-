@@ -9,6 +9,7 @@ require('dotenv').config()
 const mongoosePort = config.get("mongoURI");
 const dbPort = process.env.PORT || 5000;
 const brokerPort = 2356;
+// const brokerPort = 2359;
 // const brokerPort = process.env.PORT || 8080;
 
 //route imports
@@ -39,18 +40,14 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    server.listen(brokerPort, function () {
-       console.log('broker')
+    // server.listen(brokerPort, function () {
+    //    console.log('broker')
        const server = app.listen(dbPort);
        const io = require('./socket').init(server);
        io.on('connection', socket => {
          console.log('Client connected');
        });
-    });
-    // app.listen(dbPort,function(){
-    //   console.log('listening to my port');
-    // })
-   
+    // });
     console.log("database connected");
   })
   .catch((e) => {
